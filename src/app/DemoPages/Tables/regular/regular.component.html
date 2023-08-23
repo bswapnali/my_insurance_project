@@ -1,109 +1,133 @@
-<div class="table-header-section">
-  <div class="pagination-step-show-from">
-    <select
-    class="form-select"
-    style="width: auto"
-    [(ngModel)]="pageSize"
-    (ngModelChange)="refreshCountries()">
-    <option [ngValue]="2">2</option>
-    <option [ngValue]="4">4</option>
-    <option [ngValue]="6">6</option>
-  </select>
+<div class="mb-3 card">
+  <div class="card-header-tab card-header">
+    <div class="card-header-title font-size-lg text-capitalize fw-normal">
+      <i class="header-icon lnr-charts icon-gradient bg-happy-green"> </i>
+      Portfolio Performance
+    </div>
+    <div class="pagination-step-show-from">
+      <select
+        class="form-select"
+        style="width: auto"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshCountries()"
+      >
+        <option [ngValue]="2">2</option>
+        <option [ngValue]="4">4</option>
+        <option [ngValue]="6">6</option>
+      </select>
+    </div>
   </div>
-</div>
-<div class="card main-card mb-3 dashboard-main-table">
-  <table class="table table-striped">
-    <thead>
-    <tr >
-      <!-- <th scope="col" *ngFor="let header of countries">
+ 
+  <div class="card main-card mb-3 dashboard-main-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <!-- <th scope="col" *ngFor="let header of countries">
         <span>{{header.TITLE}}</span>
         <span>{{header}}</span>
       </th> -->
-      <th scope="col">PARTNER</th>
-      <th scope="col">
-        <div class="header_custom">
-          <div class="header_custom_title">
-            <span>FTD</span>
-          </div>
-          <div class="header_custom_titles">
-            <span>POLICY</span>
-            <span>AMOUNT</span>
-          </div>
-        </div>
-      </th>
-      <th scope="col">
-        <div class="header_custom">
-          <div class="header_custom_title">
-            <span>WTD</span>
-          </div>
-          <div class="header_custom_titles">
-            <span>POLICY</span>
-            <span>AMOUNT</span>
-          </div>
-        </div>
-      </th>
-      <th scope="col">
-        <div class="header_custom">
-          <div class="header_custom_title">
-            <span>MTD</span>
-          </div>
-          <div class="header_custom_titles">
-            <span>POLICY</span>
-            <span>AMOUNT</span>
-          </div>
-        </div>
-      </th>
-      <th scope="col">
-        <div class="header_custom">
-          <div class="header_custom_title">
-            <span>YTD</span>
-          </div>
-          <div class="header_custom_titles">
-            <span>POLICY</span>
-            <span>AMOUNT</span>
-          </div>
-        </div>
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let country of countries; index as i">
-      <td scope="row">{{ country.name }}</td>
-      <td>
-        <div class="header_custome">
-          <span class="header_custom_title">{{ country.area | number }}</span> 
-          <span class="header_custom_titles">{{ country.population | number }}</span>
-        </div>
-      </td>
-      <td>
-        <div class="header_custome">
-          <span class="header_custom_title">{{ country.area | number }}</span> 
-          <span class="header_custom_titles">{{ country.population | number }}</span>
-        </div>
-      </td>
-      <td>
-        <div class="header_custome">
-          <span class="header_custom_title">{{ country.area | number }}</span> 
-          <span class="header_custom_titles">{{ country.population | number }}</span>
-        </div>
-      </td>
-      <td>
-        <div class="header_custome">
-          <span class="header_custom_title">{{ country.area | number }}</span> 
-          <span class="header_custom_titles">{{ country.population | number }}</span>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
-      [collectionSize]="collectionSize"
-      [(page)]="page"
-      [pageSize]="pageSize"
-      (pageChange)="refreshCountries()"
-    >
-    </ngb-pagination>
+          <th scope="col">PARTNER</th>
+          <th scope="col">
+            <div class="header_custom">
+              <div class="header_custom_title">
+                <span>FTD</span>
+              </div>
+              <div class="header_custom_titles">
+                <span>POLICY</span>
+                <span>AMOUNT</span>
+              </div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="header_custom">
+              <div class="header_custom_title">
+                <span>WTD</span>
+              </div>
+              <div class="header_custom_titles">
+                <span>POLICY</span>
+                <span>AMOUNT</span>
+              </div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="header_custom">
+              <div class="header_custom_title">
+                <span>MTD</span>
+              </div>
+              <div class="header_custom_titles">
+                <span>POLICY</span>
+                <span>AMOUNT</span>
+              </div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="header_custom">
+              <div class="header_custom_title">
+                <span>YTD</span>
+              </div>
+              <div class="header_custom_titles">
+                <span>POLICY</span>
+                <span>AMOUNT</span>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countries; index as i">
+          <td scope="row">{{ country.name }}</td>
+          <td>
+            <div class="header_custome">
+              <span class="header_custom_title">{{
+                country.area | number
+              }}</span>
+              <span class="header_custom_titles">{{
+                country.population | number
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="header_custome">
+              <span class="header_custom_title">{{
+                country.area | number
+              }}</span>
+              <span class="header_custom_titles">{{
+                country.population | number
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="header_custome">
+              <span class="header_custom_title">{{
+                country.area | number
+              }}</span>
+              <span class="header_custom_titles">{{
+                country.population | number
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="header_custome">
+              <span class="header_custom_title">{{
+                country.area | number
+              }}</span>
+              <span class="header_custom_titles">{{
+                country.population | number
+              }}</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshCountries()"
+      >
+      </ngb-pagination>
+    </div>
   </div>
 </div>
 <!-- 
