@@ -8,7 +8,7 @@ Pro version for ArchitectUI based on Angular 11 is available [here](https://dash
 
 ## ArchitectUI Preview
 
-![ArchitectUI Angular 11 admin dashboard template]()
+![ArchitectUI Angular 11 admin dashboard template](https://colorlib.com/wp/wp-content/uploads/sites/2/architectui-angular-free.jpg)
 
 ## Development server
 
