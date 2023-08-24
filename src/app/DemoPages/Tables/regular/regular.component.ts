@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, Type} from '@angular/core';
 
 interface Country {
   [key: string]: any
@@ -84,8 +84,9 @@ const COUNTRIES: Country[] = [
   templateUrl: './regular.component.html',
   styles: []
 })
-export class RegularComponent implements OnInit {
 
+export class RegularComponent implements OnInit {
+  @Output() RegularComponent : Type<Component>;
   heading = 'Regular Tables';
   subheading = 'Tables are the backbone of almost all web applications.';
   icon = 'pe-7s-drawer icon-gradient bg-happy-itmeo';
