@@ -1,0 +1,12 @@
+<ul class="header-main-menu">
+    <a class="meain-menu-dash">Dashboard</a>
+    <span class="dropdown-menu">
+        <a class="meain-menu-dash"  id="servicesbutton" (click)="showSubmenu = !showSubmenu" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+        <ul class="dropdown-menu dropdown-toggle" class="submenu" [ngClass]="{'expanded' : showSubmenu}" aria-labelledby="servicesbutton">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </span>
+    <a class="meain-menu-dash">About Us</a>
+  </ul>
