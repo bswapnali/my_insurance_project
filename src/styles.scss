@@ -1,4 +1,5 @@
 @import "assets/base";
+@import '../src/assets/components/bootstrap5/variables';
 .header_custom{
     display: flex;
     flex-flow: column;
@@ -54,4 +55,10 @@
     .pagination-step-show-from{
         display: flex;
     }
+}
+.building-icon-dashboard{
+    width: 24px;
+    height: 24px;
+    display: $d-flex;
+    background-image: $building-icon-dashboard;
 }
