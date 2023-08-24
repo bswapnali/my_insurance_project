@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-
 import {BaseLayoutComponent} from './Layout/base-layout/base-layout.component';
 import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component';
 
@@ -9,6 +8,7 @@ import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component
 // Dashboards
 
 import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.component';
+import { ManagePlansComponent } from './DemoPages/Dashboards/ManagePlans/manageplan/manageplan.component';
 
 // Pages
 
@@ -61,7 +61,7 @@ const routes: Routes = [
       // Dashboads
 
       {path: '', component: AnalyticsComponent, data: {extraParameter: 'dashboardsMenu'}},
-
+      {path: 'manageplan',component:ManagePlansComponent},
       // Elements
 
       {path: 'elements/buttons-standard', component: StandardComponent, data: {extraParameter: 'elementsMenu'}},
