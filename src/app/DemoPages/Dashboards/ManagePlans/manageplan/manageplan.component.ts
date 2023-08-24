@@ -6,6 +6,7 @@ import {Label} from 'ng2-charts';
 @Component({
   selector: 'app-manageplan ',
   templateUrl: './manageplan.component.html',
+  styleUrls: ['./manageplan.component.scss']
 })
 export class ManagePlansComponent implements OnInit {
   public barChartOptions: ChartOptions = {
@@ -35,25 +36,7 @@ export class ManagePlansComponent implements OnInit {
   ngOnInit() {
   }
 
-  // events
-  public chartClicked({event, active}: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({event, active}: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public randomize(): void {
-    // Only Change 3 values
-    const data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    this.barChartData[0].data = data;
-  }
+  // Button Method
+  createNewPlan(){}
+ 
 }
