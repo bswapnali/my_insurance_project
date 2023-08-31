@@ -1,20 +1,150 @@
-
 <div>
   <h4>Manage Plans</h4>
 </div>
-<div class="container">
-  <div class="row align-items-center">
-    <div class="col-auto existing-plan-icon">
-    </div>
+
+
+  <hr class="hr" />
+  <!-- Tab Buttons -->
+  <div class="row mt-3">
     <div class="col">
-      <h3 class="text">Existing Plans</h3>
-    </div>
-    <div class="col-auto">
-      <button type="button" class="btn btn-light" mdbRipple rippleColor="dark" ng-click="createNewPlan()">
-         Create New Plan
+      <button class="btn btn-tab" [class.active]="activeTab === 'all'" (click)="setActiveTab('all')">All</button>
+      <button class="btn btn-tab" [class.active]="activeTab === 'active'" (click)="setActiveTab('active')">
+        Active ({{ activeCount }})
+      </button>
+      <button class="btn btn-tab" [class.active]="activeTab === 'inactive'" (click)="setActiveTab('inactive')">
+        Inactive ({{ inactiveCount }})
       </button>
     </div>
   </div>
-  <hr class="hr" />
-</div>
+  <!-- Search bar and More Filters -->
+  <div class="row mt-3 search-filter">
+    <div class="form-group has-search d-flex">
+      <span class="fa fa-search form-control-feedback" (click)="performSearch()"></span>
+      <input type="text" class="form-control" placeholder="Search by Title" [(ngModel)]="searchQuery" (input)="filterData()">
+    </div>
+    <div class="text-md-right more-filters-button">
+      <button type="button" class="btn btn-filter" style="border: 1px solid #000000;">
+        <span> More Filters </span>
+      </button>
+    </div>
   
+</div>
+<div class="container mt-4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product ID</th>
+        <th>Product Plan Details</th>
+        <th>Plan Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let product of Tdata; let i = index">
+        <tr>
+          <td>
+            <button class="btn btn-link" type="button" (click)="toggleRowDetails(i)">
+              <i [class]="getRowIconClass(i)"></i>
+            </button>
+            <label class="radio-inline">
+              <input type="radio" name="radioGroup{{i}}" value="option1"> 
+            </label>
+          </td>
+          <td>{{ product.productId }}</td>
+          <td>
+            Product: {{ product.product }},<br>
+            Sub-Product: {{ product.subProduct }}<br>
+            <a href="#">View Details</a>
+          </td>
+          <td>{{ product.planCreatedAt | date:'dd/MM/yyyy' }}</td>
+          <td class="manageplan_icons">
+            <span></span>
+            <a href="#"><i class="fa fa-eye"></i></a>
+            <a href="#"><i class="bi bi-arrow-90deg-right"></i></a>
+            <i class="fa fa-trash"></i>
+            <i class="fa fa-ellipsis-v"></i>
+          </td>
+        </tr>
+        <tr *ngIf="expandedRows[i]">
+          <td colspan="5">
+            <div class="panel">
+              <div class="panel-body">
+                <!-- Display expanded product details -->
+                <td>&nbsp;</td>
+                <td><p>{{ product.productId }}</p></td> 
+                <td><p> Product:{{ product.product }}, </p>
+                  <p> Sub-Product:{{ product.subProduct }}</p>
+                  <a href="#">View Details</a>
+               </td>
+                <td><p>{{ product.planCreatedAt | date:'dd/MM/yyyy' }}</p></td>
+                <td>&nbsp;</td>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <tr *ngIf="filteredData.length === 0">
+        <td colspan="5">No records found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- <div class="container mt-4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product ID</th>
+        <th>Product Plan Details</th>
+        <th>Plan Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let product of Tdata">
+        <tr [class.expanded]="expandedElement === product">
+          <td>
+            <a href="#" (click)="toggleExpanded(product)"></a>
+          </td>
+          <td>{{ product.productId }}</td>
+          <td>
+            Product: {{ product.product }},
+            Sub-Product: {{ product.subProduct }}
+            <a href="#">View Details</a>
+          </td>
+          <td>{{ product.planCreatedAt | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <i class="fa fa-copy"></i>
+            <a href="#">View</a>
+            <a href="#">Back</a>
+            <i class="fa fa-trash"></i>
+            <i class="fa fa-ellipsis-v"></i>
+          </td>
+        </tr>
+        <tr [class.expanded]="expandedElement === product">
+          <td colspan="5">
+            <div [id]="'collapse-' + product.productId" class="collapse">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <label class="radio-inline">
+                    <input type="radio" name="radioGroup" value="option1"> Option 1
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="radioGroup" value="option2"> Option 2
+                  </label>
+                </div>
+                <div class="panel-body">
+            
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div> -->

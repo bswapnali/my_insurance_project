@@ -12,7 +12,7 @@ import {LoadingBarRouterModule} from '@ngx-loading-bar/router';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
-
+import { Observable } from 'rxjs';
 // BOOTSTRAP COMPONENTS
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -103,6 +103,7 @@ import {DynamicChartComponent} from './DemoPages/Charts/chartjs/examples/dynamic
 import {DoughnutChartComponent} from './DemoPages/Charts/chartjs/examples/doughnut-chart/doughnut-chart.component';
 import {PieChartComponent} from './DemoPages/Charts/chartjs/examples/pie-chart/pie-chart.component';
 import { MainMenuComponent } from './Layout/Components/header/elements/main-menu/main-menu';
+import { PlandetailsComponent } from './plandetails/plandetails.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -194,6 +195,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DynamicChartComponent,
     BubbleChartComponent,
     ScatterChartComponent,
+    PlandetailsComponent,
   ],
   imports: [
     BrowserModule,
